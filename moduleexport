@@ -1,7 +1,0 @@
-module.exports = {
- kod: "kod",
-  async run (client, message, args) {
-  const Discord = require('discord.js');
-
- }
-};
