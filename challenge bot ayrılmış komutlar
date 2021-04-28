@@ -1,0 +1,124 @@
+client.on("guildMemberAdd", member => {
+  try {
+    const Counter = member.guild;
+  Counter.setName(`Amine Oyunu (${member.guild.memberCount}/${hedef})`);
+}
+catch (e) {
+  console.log(e);
+}
+}); //sunucu ismi değiştiren counter +
+
+
+
+client.on("guildMemberRemove", member => {
+  try {
+    const Counter = member.guild;
+  Counter.setName(`Amine Oyunu (${member.guild.memberCount}/${hedef})`);
+}
+catch (e) {
+  console.log(e);
+}
+}); //sunucu ismi değiştiren counter -
+
+client.on("guildMemberAdd", member => {
+  try {
+    const Counter = member.guild.channels.cache.find(channel => channel.id === '835981653179367425');
+  Counter.setName(`Üye Sayısı: ${member.guild.memberCount}`);
+}
+catch (e) {
+  console.log(e);
+}
+}); //Kanal ismi değiştiren counter +
+
+client.on("guildMemberRemove", member => {
+  try {
+    const Counter = member.guild.channels.cache.find(channel => channel.id === '835981653179367425');
+  Counter.setName(`Üye Sayısı: ${member.guild.memberCount}`);
+}
+catch (e) {
+  console.log(e);
+}
+}); //Kanal ismi değiştiren counter -
+
+
+
+client.on('guildMemberAdd', member => {
+  const hoşgeldin = member.guild.channels.cache.find(channel => channel.name === 'üye-sayaç');
+  hoşgeldin.send(`${member} sunucumuza katıldı. Üye sayımız ${member.guild.memberCount}, üye hedefimiz ${hedef}`);
+
+}); //Hoşgeldin Mesajı member counter +
+
+client.on('guildMemberRemove', member => {
+  const hoşgeldin = member.guild.channels.cache.find(channel => channel.name === 'üye-sayaç');
+  hoşgeldin.send(`${member} sunucumuzdan ayrıldı. Üye sayımız ${member.guild.memberCount} oldu. Üye hedefimiz ${member.guild.memberCount}/${hedef}`);
+
+}); //Hoşgeldin Mesajı member counter -
+
+
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'embed') {
+    const kanal = new MessageEmbed()
+
+    .setTitle("Bu bir başlıktır")//başlık ayarlar
+    .setDescription("Bu bir açıklamadır")//açıklama ayarlar
+    .setAuthor("Challenge Bot Deneme")//mesaj sahibini ayarlar
+    .setColor("RANDOM")//rengi ayarlar PINK yazarsan pembe BLUE yazarsan mavi
+    .setThumbnail("https://media.discordapp.net/attachments/832525052452667403/835594755681026148/unknown.png")//resmi ayarlar
+    .addField(":joy: ", "Burada mesaj yazıyor");//mesajlar yazar
+    msg.channel.send(kanal);
+  }
+}); //embed mesaj
+
+
+
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity('ZAAAAA xd', { type: 'PLAYING'})
+  .then(presence => console.log(`Durum ${presence.activities[0].name} oldu.`))
+  .catch(console.error);
+}); //aktivite ayarı
+
+
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'napim') {
+    msg.channel.send('götünü sikim');
+  }
+}); //prefixsiz yanıt
+
+
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === '31') {
+    msg.author.send('bu çok komikti sjsjjssj');
+  }
+}); //özelden mesaj
+
+
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === prefix + 'ching') {
+    msg.channel.send('Ching Chong Welcome to China');
+  }
+}); //prefixli yanıt
+
+
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'za') {
+    msg.delete()
+    msg.channel.send('Bu kelime yasaklı');
+  }
+}); //yasaklı kelimeyi silme
+
+
+client.on("guildMemberAdd", member => {
+  try {
+  let role = member.guild.roles.cache.find(role => role.name === 'Yeni üye')
+  member.roles.add(role);
+} catch(e) {
+  console.log(e);
+}
+}); //yeni üye rolü
