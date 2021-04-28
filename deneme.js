@@ -50,7 +50,7 @@ client.on("message", async message => {
 client.on('guildMemberAdd', member => {
    const hoşgeldin = member.guild.channels.cache.find(channel => channel.name === 'hoşgeldin');
    hoşgeldin.send(`Hoşgeldin, ${member}`);
-   member.send(`${member} Sunucumuza Hoşgeldin.`)
+   //member.send(`${member} Sunucumuza Hoşgeldin.`)
 }); //Hoşgeldin Mesajı
 
 client.on('guildMemberRemove', member => {
@@ -71,15 +71,6 @@ client.on('message', msg => {
     msg.channel.send('özür dilerim');
   }
 }); //bad bot
-
-client.on("guildMemberAdd", member => {
-  try {
-  let role = member.guild.roles.cache.find(role => role.name === '836567358306385952')
-  member.roles.add(role);
-} catch(e) {
-  console.log(e);
-}
-}); //yeni üye rolü
 
 var prompts = [];
 client.on('message', (msg) => {
@@ -138,7 +129,7 @@ client.on('message', (msg) => {
       break;
 
       case 'help':
-      msg.channel.send('Komutlar\n +add "konu" (Konu eklemenizi sağlar.)\n +get (Eklenen konular arasından bir tanesini rastgele bir biçimde seçer)\n +delete (Son eklenen konuyu siler.)\n +list (Eklenen konuları sıralar.)\n +reset (Eklenen bütün konuları siler.)' )
+      msg.channel.send('Komutlar\n +add "konu" (Konu eklemenizi sağlar.)\n +get (Eklenen konular arasından bir tanesini rastgele bir biçimde seçer)\n +delete (Son eklenen konuyu siler.)\n +list (Eklenen konuları alfabetik sıraya göre sıralar.)\n +reset (Eklenen bütün konuları siler.)' )
   };
 
 });//prompt selector
