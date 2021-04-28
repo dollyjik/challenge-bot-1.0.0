@@ -74,7 +74,7 @@ client.on('message', msg => {
 
 client.on("guildMemberAdd", member => {
   try {
-  let role = member.guild.roles.cache.find(role => role.name === 'Challengers')
+  let role = member.guild.roles.cache.find(role => role.name === '836567358306385952')
   member.roles.add(role);
 } catch(e) {
   console.log(e);
