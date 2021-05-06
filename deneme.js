@@ -49,16 +49,7 @@ client.on("message", async message => {
     }
 })
 
-client.on('guildMemberAdd', member => {
-   const hoşgeldin = member.guild.channels.cache.find(channel => channel.name === 'hoşgeldin');
-   hoşgeldin.send(`Hoşgeldin, ${member}`);
-   //member.send(`${member} Sunucumuza Hoşgeldin.`)
-}); //Hoşgeldin Mesajı
 
-client.on('guildMemberRemove', member => {
-  const hoşgeldin = member.guild.channels.cache.find(channel => channel.name === 'hoşgeldin');
-  hoşgeldin.send(`${member}, sunucumuzdan ayrıldı.`);
-}); //Sunucudan ayrıldı Mesajı
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'nicebot') {
