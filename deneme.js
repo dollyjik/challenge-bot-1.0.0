@@ -1,6 +1,7 @@
 const Discord = require('discord.js') // discord.js modülü tanımlıyoruz.
 const client = new Discord.Client() // client tanımalamsı
 const { readdirSync } = require('fs'); // tanımlamalar
+const Database = require("@replit/database") //database modülünün tanımlaması
 const { join } = require('path'); // tanımlamalar
 const userID = ["569969682749063193", "297106660713824257", "323546782804082688", "263372687483600896", "140155109966348289"]
 client.commands= new Discord.Collection(); // komutları alıyoruz
@@ -24,9 +25,16 @@ for (const file of commandFiles) {
 client.on("error", console.error);
 
 client.on('ready', () => {
-    client.user.setActivity('+add "konunuz"')
-    console.log('Botumuz Aktif')
-});
+
+  client.user.setActivity('+add "konunuz"')
+  console.log('Botumuz Aktif')
+
+  setInterval(() => {
+    var yourchannel = client.channels.cache.get('852934916282646568');
+    yourchannel.send('Botu açık tutuyorum');
+  }, "2700000");
+  });
+
 
 client.on("message", async message => {
 
@@ -131,6 +139,8 @@ client.on('message', (msg) => {
       msg.channel.send('Komutlar\n +add "konu" (Konu eklemenizi sağlar.)\n +get (Eklenen konular arasından bir tanesini rastgele bir biçimde seçer)\n +delete (Son eklenen konuyu siler.)\n +list (Eklenen konuları alfabetik sıraya göre sıralar.)\n +reset (Eklenen bütün konuları siler.)' )
 
   };
+
+
 
 });//prompt selector
 
