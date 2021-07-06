@@ -1,6 +1,8 @@
 const Discord = require('discord.js') // discord.js modülü tanımlıyoruz.
 const client = new Discord.Client() // client tanımalamsı
 const { readdirSync } = require('fs'); // tanımlamalar
+const fs = require('fs');
+const Database = require("@replit/database") //database modülünün tanımlaması
 const { join } = require('path'); // tanımlamalar
 const userID = ["569969682749063193", "297106660713824257", "323546782804082688", "263372687483600896", "140155109966348289"]
 client.commands= new Discord.Collection(); // komutları alıyoruz
@@ -88,16 +90,39 @@ client.on('message', (msg) => {
 
   switch (cmd) {
     case 'add':
+    const mesaj = `${msg.content} `;
+    const remove = mesaj.replace("+add", "");
+    if (msg.member.roles.cache.find(r => r.name === "Challengers")){
+        let fileContent = fs.readFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt").toString();
+      if(fileContent.length == 0){
+        fs.writeFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", sıra + remove)
+      }else{
+    fs.writeFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", fileContent + `\n` + sıra + remove );
+    msg.channel.send("Konu başarı ile eklendi")
+  }}else {
 
-    prompts.push(sıra + args.join(" "));
-    msg.channel.send('Konu başarıyla eklendi.')
+    }
 
     break;
 
     case 'get':
     if (userID.includes(msg.author.id)){
-    msg.channel.send(`${seçilenprompt}`);
+      const data2 = fs.readFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt").toString();
+      const splitData = data2.split('\n');
+      const randomNumber = [Math.floor(Math.random() * splitData.length)];
+      const line = splitData.splice(randomNumber, 1);
+      fs.readFile("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", 'utf8', function(err, data)
+{
+    if (err)
+    {
 
+    }
+    var linesExceptFirst = data.split('\n').filter(function(line2){
+    return line2.indexOf( line ) == -1;
+  }).join('\n')
+    fs.writeFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", linesExceptFirst);
+});
+      msg.channel.send(line);
     }else {
 
       msg.reply('Bu komutu kullanmak için yetkinizin olması gerekmektedir.');
@@ -107,8 +132,29 @@ client.on('message', (msg) => {
 
     case 'delete':
     if (userID.includes(msg.author.id)){
-      prompts.pop();
-      msg.channel.send('Son eklenen konu silinmiştir.');
+      fs.readFile("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", {encoding: 'utf-8'}, function(err, data) {
+       if (err) throw error;
+
+       let dataArray = data.split('\n');
+       let searchKeyword = `${msg.content}`;
+       let lastIndex = -1;
+
+        for (let index=0; index < dataArray.length; index++) {
+         if (dataArray[index].includes(searchKeyword)) {
+             lastIndex = index;
+             break;
+        }
+    }
+    dataArray.splice(lastIndex, 1);
+
+    const updatedData = dataArray.join('\n');
+    fs.writeFile("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", updatedData, (err) => {
+        if (err) throw err;
+            msg.channel.send('Son eklenen konu silinmiştir.');
+    });
+
+});
+
     }else {
 
       msg.reply('Bu komutu kullanmak için yetkinizin olması gerekmektedir.');
@@ -117,16 +163,19 @@ client.on('message', (msg) => {
     break;
 
     case 'list':
-    if (prompts.length == '0'){
-      msg.channel.send('Liste boş.');
-    }else{
-    msg.channel.send(prompts);
+
+    var liste = fs.readFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", 'utf8')
+    if (liste.length = 0){
+    msg.channel.send(liste.toString());
+  }else{
+    msg.reply('Liste boş.')
   }
+
     break;
 
     case 'reset':
         if (userID.includes(msg.author.id)){
-          prompts.length = '0';
+          fs.truncate("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", 0, function(){console.log()});
           msg.channel.send('Bütün liste sıfırlanmıştır.');
 
         }else {
@@ -134,8 +183,8 @@ client.on('message', (msg) => {
       }
       break;
 
-      case 'help':
-      msg.channel.send('Komutlar\n +add "konu" (Konu eklemenizi sağlar.)\n +get (Eklenen konular arasından bir tanesini rastgele bir biçimde seçer)\n +delete (Son eklenen konuyu siler.)\n +list (Eklenen konuları alfabetik sıraya göre sıralar.)\n +reset (Eklenen bütün konuları siler.)' )
+    case 'help':
+      msg.channel.send('Komutlar\n +add "konu" (Konu eklemenizi sağlar.)\n +get (Eklenen konular arasından bir tanesini rastgele bir biçimde seçer ve listeden siler.)\n +delete (Son eklenen konuyu siler.)\n +list (Eklenen konuları alfabetik sıraya göre sıralar.)\n +reset (Eklenen bütün konuları siler.)' )
 
   };
 
@@ -172,5 +221,6 @@ client.on('guildDelete', async guild => {
   const channel = client.channels.cache.find(ch => ch.id === '836348692306460673')
   channel.send(embed2)
 });//sunucudan çıkarıldığında yollanan mesajlar
+
 
 client.login('ODM1NTc4OTA3MDQ5NTkwNzg1.YIRffw.YA0hSANQ6Zakmw3WHufUtvyFwLw')
