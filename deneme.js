@@ -92,11 +92,11 @@ client.on('message', (msg) => {
     const mesaj = `${msg.content} `;
     const remove = mesaj.replace("+add", "");
     if (msg.member.roles.cache.find(r => r.name === "Challengers")){
-        let fileContent = fs.readFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt").toString();
+        let fileContent = fs.readFileSync("prompts.txt").toString();
       if(fileContent.length == 0){
-        fs.writeFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", sıra + remove)
+        fs.writeFileSync("prompts.txt", sıra + remove)
       }else{
-    fs.writeFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", fileContent + `\n` + sıra + remove + `  User:${msg.author.username}` );
+    fs.writeFileSync("prompts.txt", fileContent + `\n` + sıra + remove + `  User:${msg.author.username}` );
     msg.channel.send("Konu başarı ile eklendi")
   }}else {
 
@@ -106,11 +106,11 @@ client.on('message', (msg) => {
 
     case 'get':
     if (userID.includes(msg.author.id)){
-      const data2 = fs.readFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt").toString();
+      const data2 = fs.readFileSync("prompts.txt").toString();
       const splitData = data2.split('\n');
       const randomNumber = [Math.floor(Math.random() * splitData.length)];
       const line = splitData.splice(randomNumber, 1);
-      fs.readFile("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", 'utf8', function(err, data)
+      fs.readFile("prompts.txt", 'utf8', function(err, data)
 {
     if (err)
     {
@@ -119,7 +119,7 @@ client.on('message', (msg) => {
     var linesExceptFirst = data.split('\n').filter(function(line2){
     return line2.indexOf( line ) == -1;
   }).join('\n')
-    fs.writeFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", linesExceptFirst);
+    fs.writeFileSync("prompts.txt", linesExceptFirst);
 });
       msg.channel.send(line);
     }else {
@@ -131,7 +131,7 @@ client.on('message', (msg) => {
 
     case 'delete':
     if (userID.includes(msg.author.id)){
-      fs.readFile("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", {encoding: 'utf-8'}, function(err, data) {
+      fs.readFile("prompts.txt", {encoding: 'utf-8'}, function(err, data) {
        if (err) throw error;
 
        let dataArray = data.split('\n');
