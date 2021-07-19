@@ -147,7 +147,7 @@ client.on('message', (msg) => {
     dataArray.splice(lastIndex, 1);
 
     const updatedData = dataArray.join('\n');
-    fs.writeFile("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", updatedData, (err) => {
+    fs.writeFile("prompts.txt", updatedData, (err) => {
         if (err) throw err;
             msg.channel.send('Son eklenen konu silinmiştir.');
     });
@@ -163,7 +163,7 @@ client.on('message', (msg) => {
 
     case 'list':
 
-    var liste = fs.readFileSync("C:\Users\Dolly\Desktop\Challenge Bot\prompts.txt", 'utf8')
+    var liste = fs.readFileSync("prompts.txt", 'utf8')
     if (liste.length = 0){
           msg.reply('Liste boş.')
   ;
