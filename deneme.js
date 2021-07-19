@@ -2,7 +2,6 @@ const Discord = require('discord.js') // discord.js modülü tanımlıyoruz.
 const client = new Discord.Client() // client tanımalamsı
 const { readdirSync } = require('fs'); // tanımlamalar
 const fs = require('fs');
-const Database = require("@replit/database") //database modülünün tanımlaması
 const { join } = require('path'); // tanımlamalar
 const userID = ["569969682749063193", "297106660713824257", "323546782804082688", "263372687483600896", "140155109966348289"]
 client.commands= new Discord.Collection(); // komutları alıyoruz
