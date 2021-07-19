@@ -91,7 +91,7 @@ client.on('message', (msg) => {
     case 'add':
     const mesaj = `${msg.content} `;
     const remove = mesaj.replace("+add", "");
-    if (msg.member.roles.cache.find(r => r.name === "Challengers")){
+    if (msg.member.roles.cache.find(r => r.name === "Challengers✏️")){
         let fileContent = fs.readFileSync("prompts.txt").toString();
       if(fileContent.length == 0){
         fs.writeFileSync("prompts.txt", sıra + remove)
