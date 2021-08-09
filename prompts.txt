@@ -1,12 +1,12 @@
-- Sunset at an alien planet  User:ObiWan
-- When thunder struck  User:ObiWan
-- Repair shop  User:ObiWan
-- Fisherman in a serene setting  User:buwuse
-- Floating castles in the sky  User:dollyjik
-- Ra (Egyptian Sun God)  User:dollyjik
-- A shadowmancer  User:dollyjik
-- Stuck in an elevator with a crush  User:buwuse
-- A flying whale  User:buwuse
-- blood mage  User:birb
-- A cozy coffee shop   User:dollyjik
-- capitalist dragon   User:ObiWan
+- Sunset at an alien planet            User:ObiWan
+- When thunder struck                  User:ObiWan
+- Repair shop                          User:ObiWan
+- Fisherman in a serene setting        User:buwuse
+- Floating castles in the sky          User:dollyjik
+- Ra (Egyptian Sun God)                User:dollyjik
+- A shadowmancer                       User:dollyjik
+- Stuck in an elevator with a crush    User:buwuse
+- A flying whale                       User:buwuse
+- blood mage                           User:birb
+- A cozy coffee shop                   User:dollyjik
+- capitalist dragon                    User:ObiWan
