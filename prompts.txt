@@ -1,7 +1,5 @@
 - Sunset at an alien planet            User:ObiWan
 - Fisherman in a serene setting        User:buwuse
-- Floating castles in the sky          User:dollyjik
-- A shadowmancer                       User:dollyjik
 - Stuck in an elevator with a crush    User:buwuse
 - A flying whale                       User:buwuse
 - blood mage                           User:birb
@@ -10,4 +8,4 @@
 - dark spell user                      User:birb
 - cowboy (sexy)                        User:ObiWan
 - Death bringer ¯\_(ツ)_/¯             User:birb
--necromancer dancer                    User:Obiwan
+- necromancer dancer                    User:Obiwan
