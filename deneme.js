@@ -224,4 +224,4 @@ client.on('guildDelete', async guild => {
 });//sunucudan çıkarıldığında yollanan mesajlar
 
 
-client.login('ODM1NTc4OTA3MDQ5NTkwNzg1.YIRffw.YA0hSANQ6Zakmw3WHufUtvyFwLw')
+client.login('Your Token is Here')
